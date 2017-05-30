@@ -1,24 +1,28 @@
-<body class="hold-transition login-page">
-  <div class="login-box" >
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+<form #f="ngForm" class="login-body">
+  <div class="my__card login-panel ui-fluid" >
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <img src="assets/img/angular.svg">
+        <h3 class="first">Login</h3>
+        <input type="text" autocomplete="off" pInputText name="username" required [(ngModel)]="user.username" autofocus
+               #username
+               (keyup.enter)="password.focus()"
+               class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-dirty ng-invalid">
 
-      <form (submit)="login()" >
+        <h3 class="first">Senha</h3>
+        <input type="password" name="password" required [(ngModel)]="user.password" pInputText #password
+               (keyup.enter)="login()"
+               autocomplete="off"
+               class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-dirty ng-invalid">
 
-        <div class="form-group has-feedback">
-          <input type="email" class="form-control" placeholder="Email" required minlength="8" name="eml" [(ngModel)]="email" #eml="ngModel">
-          <span class="glyphicon glyphicon-enveloppe form-control-feedback"></span>
-        </div>
-
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Password" required minlength="8" name="passwd" [(ngModel)]="password" #passwd="ngModel">
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-      </form>
-
+        <p-messages [value]="msgs"></p-messages>
+      </div>
+      <div class="ui-g-6">
+        <button pButton type="button"  routerLink="/register" label="Registrar">     </button>
+      </div>
+      <div class="ui-g-6">
+        <button pButton type="button" (click)="login()" class="ui-button-success" label="Entrar" >        </button>
+      </div>
     </div>
-    <!-- /.login-box-body -->
   </div>
-  <!-- /.login-box -->
-</body>
+</form>

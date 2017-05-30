@@ -1,5 +1,6 @@
 package br.com.modelo.util;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.w3c.dom.Document;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,7 +16,7 @@ import java.util.Properties;
 public class Util {
 
 
-  public static String getURL(int porta){
+  public static String getURL(String porta){
     return String.format(Constantes.URL,porta);
   }
 
@@ -83,5 +84,9 @@ public class Util {
   }
 
 
+  public static String enconder(String val){
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    return encoder.encode(val);
+  }
 
 }

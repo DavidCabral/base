@@ -1,0 +1,33 @@
+<form #f="ngForm" class="register-body">
+  <div class="my__card register-panel ui-fluid">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h3 class="first">Login</h3>
+        <input type="text" autocomplete="off" pInputText name="username" required [(ngModel)]="user.username" autofocus
+               #username
+               (keyup.enter)="email.focus()"
+               class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-dirty ng-invalid">
+
+        <h3 class="first">Email</h3>
+        <input type="text" autocomplete="off" pInputText name="email" required [(ngModel)]="user.email"
+               #email
+               (keyup.enter)="password.focus()"
+               class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-dirty ng-invalid">
+
+        <h3 class="first">Senha</h3>
+        <input type="password" name="password" required pPassword [(ngModel)]="user.password" #password
+               weakLabel="Fraco" mediumLabel="Médio" strongLabel="Forte"
+               (keyup.enter)="register()"
+               autocomplete="off"
+               class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-dirty ng-invalid">
+
+      </div>
+      <div class="ui-g-6">
+        <button pButton type="button" routerLink="/login" class="ui-button-danger" label="voltar"></button>
+      </div>
+      <div class="ui-g-6">
+        <button pButton type="button" (click)="register()" class="ui-button-success" label="Registrar"></button>
+      </div>
+    </div>
+  </div>
+</form>

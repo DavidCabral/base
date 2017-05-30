@@ -1,0 +1,55 @@
+body .ui-widget:disabled,
+body .ui-state-disabled {
+  opacity: 0.3;
+  background-image: none;
+  cursor: auto !important;
+  color: black;
+}
+
+body .ui-datatable .ui-datatable-data tr td {
+  padding: .250em .450em;
+}
+
+body .ui-datatable .ui-datatable-thead > tr th {
+   padding: .125em .175em;
+  /* background-color: #ffffff; */
+}
+
+body .ui-inputtext:disabled {
+  opacity: 0.9 !important;
+  border-bottom: 1px dotted;
+  background-color: bisque;
+}
+
+
+
+.my___margin-left_0 {
+  margin-left: 0 !important;}
+
+
+
+.my__mini_buton{
+  width: 22px !important;
+  height: 24px !important;
+}
+
+.my__card {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: #ffffff;
+  padding: 10px;
+  margin: 4px;
+  height: 100%;
+  /* margin-bottom: 1em; */
+  box-sizing: border-box;
+}
+
+.my__bt{
+  padding-left: 25px !important;
+  text-align: left !important;
+  margin: 1px;
+}

@@ -1,10 +1,12 @@
 package br.com.modelo.controller;
 
-import br.com.modelo.entidades.Usuario;
+import br.com.modelo.entity.User;
 import br.com.modelo.security.TokenUtils;
-import br.com.modelo.util.AuthenticationResponse;
+import br.com.modelo.security.model.json.request.AuthenticationRequest;
+import br.com.modelo.security.model.json.response.AuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mobile.device.Device;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,8 +41,8 @@ public class AuthenticationController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> authenticationRequest(@RequestBody Usuario authenticationRequest, Device device) throws AuthenticationException {
+    @RequestMapping(method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> authenticationRequest(@RequestBody AuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
         SecurityContextHolder.getContext().setAuthentication(getAuthenticate(authenticationRequest));
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         return ResponseEntity.ok(new AuthenticationResponse(tokenUtils.generateToken(userDetails, device)));
@@ -51,7 +53,7 @@ public class AuthenticationController {
     public ResponseEntity<?> authenticationRequest(HttpServletRequest request) {
         String token = request.getHeader(this.tokenHeader);
         String username = this.tokenUtils.getUsernameFromToken(token);
-        Usuario user = (Usuario) this.userDetailsService.loadUserByUsername(username);
+        User user = (User) this.userDetailsService.loadUserByUsername(username);
         if (this.tokenUtils.canTokenBeRefreshed(token, user.getLastPasswordReset())) {
             String refreshedToken = this.tokenUtils.refreshToken(token);
             return ResponseEntity.ok(new AuthenticationResponse(refreshedToken));
@@ -61,7 +63,7 @@ public class AuthenticationController {
     }
 
 
-    private Authentication getAuthenticate(@RequestBody Usuario authenticationRequest) {
+    private Authentication getAuthenticate(AuthenticationRequest authenticationRequest) {
         return this.authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         authenticationRequest.getUsername(),

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-template',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private router: Router) {
   }
 
+  ngOnInit() {
+    this.router.navigate(['/users']);
+  }
 }

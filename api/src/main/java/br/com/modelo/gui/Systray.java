@@ -1,8 +1,9 @@
 package br.com.modelo.gui;
 
-import br.com.modelo.config.Config;
+import br.com.modelo.util.Constantes;
 import br.com.modelo.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,8 @@ import java.net.URISyntaxException;
 public class Systray implements Serializable {
     private static final long serialVersionUID = -4969680024232053573L;
     private TrayIcon trayIcon;
-    @Autowired  private Config config;
+    @Autowired private Environment env;
+
 
 
     public void init() throws IOException {
@@ -52,8 +54,8 @@ public class Systray implements Serializable {
         popup.add(defaultItem);
 
         try {
-            Image img = Toolkit.getDefaultToolkit().createImage("https://www.google.com.br/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png");
-            trayIcon = new TrayIcon(img, "Versão: " + Util.getVersion(), popup);
+            Image image = Toolkit.getDefaultToolkit().getImage("");
+            trayIcon = new TrayIcon(image, "Versão: " + Util.getVersion(), popup);
             trayIcon.addActionListener(sysListener);
             trayIcon.setImageAutoSize(true);
             tray.add(trayIcon);
@@ -67,7 +69,7 @@ public class Systray implements Serializable {
 
 
     private void mostrarMenssagem() {
-        trayIcon.displayMessage("Atenção","O Service está rodando na porta " + config.getPorta(), TrayIcon.MessageType.INFO);
+        trayIcon.displayMessage("Atenção","O Service está rodando na porta " + getPorta(), TrayIcon.MessageType.INFO);
     }
 
 
@@ -76,10 +78,15 @@ public class Systray implements Serializable {
             return;
         }
         try {
-            Desktop.getDesktop().browse(new URI(Util.getURL(config.getPorta())));
+            Desktop.getDesktop().browse(new URI(Util.getURL(getPorta())));
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
+    }
+
+
+    private String getPorta(){
+        return env.getProperty(Constantes.PORT_PROP, Constantes.DEFAULT_PORT);
     }
 
 

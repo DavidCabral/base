@@ -1,6 +1,6 @@
 package br.com.modelo.security;
 
-import br.com.modelo.entidades.Usuario;
+import br.com.modelo.security.model.security.SecUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -157,7 +157,7 @@ public class TokenUtils {
   }
 
   public Boolean validateToken(String token, UserDetails userDetails) {
-    Usuario user = (Usuario) userDetails;
+    SecUser user = (SecUser) userDetails;
     final String username = this.getUsernameFromToken(token);
     final Date created = this.getCreatedDateFromToken(token);
     this.getExpirationDateFromToken(token);

@@ -1,17 +1,13 @@
-package br.com.modelo.entidades;
+package br.com.modelo.security.model.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Transient;
 import java.util.Collection;
 import java.util.Date;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Usuario implements UserDetails {
+public class SecUser implements UserDetails {
     private static final long serialVersionUID = 3118617507142482830L;
     private Long id;
     private String username;
@@ -19,35 +15,23 @@ public class Usuario implements UserDetails {
     private String email;
     private String urlImage;
     private Date lastPasswordReset;
-    private String rules;
-
-    @Transient
     private Collection<? extends GrantedAuthority> authorities;
-    @Transient
     private Boolean accountNonExpired = true;
-    @Transient
     private Boolean accountNonLocked = true;
-    @Transient
     private Boolean credentialsNonExpired = true;
-    @Transient
     private Boolean enabled = true;
 
-    public Usuario() {
+    public SecUser() {
         super();
     }
 
-    public Usuario(Long id, String username, String password, String email, Date lastPasswordReset, String rules) {
+    public SecUser(Long id, String username, String password, String email, Date lastPasswordReset, Collection<? extends GrantedAuthority> authorities) {
         this.setId(id);
         this.setUsername(username);
         this.setPassword(password);
         this.setEmail(email);
         this.setLastPasswordReset(lastPasswordReset);
-        this.rules = rules;
-        this.setAuthorities();
-    }
-
-    private void setAuthorities() {
-        authorities = AuthorityUtils.commaSeparatedStringToAuthorityList(rules);
+        this.setAuthorities(authorities);
     }
 
     public Long getId() {
@@ -165,11 +149,5 @@ public class Usuario implements UserDetails {
         this.urlImage = urlImage;
     }
 
-    public String getRules() {
-        return rules;
-    }
 
-    public void setRules(String rules) {
-        this.rules = rules;
-    }
 }

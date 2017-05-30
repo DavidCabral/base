@@ -1,0 +1,57 @@
+.register-body {
+  background: url("http://lorempixel.com/400/200/") top left no-repeat #f7f7f7;
+  background-size: 100% auto;
+  margin-top: -70px;
+  height: auto; }
+
+.register-panel {
+  text-align: center;
+  width: 550px;
+  margin: 100px auto 0 auto; }
+.register-panel .ui-g .ui-g-12 {
+  padding: 25px 40px; }
+.register-panel .ui-g .ui-g-12 .ui-button {
+  margin-bottom: 20px; }
+.register-panel .ui-button:hover {
+  background-color: #424242; }
+.register-panel .ui-button:focus {
+  outline: 0 none;
+  background-color: #8f8f8f; }
+.register-panel .ui-button.secondary:hover {
+  background-color: #D84315; }
+.register-panel .ui-button.secondary:focus {
+  outline: 0 none;
+  background-color: #ff7e55; }
+.register-panel .ui-inputtext:focus {
+  border-width: 0 0 2px 0;
+  border-color: #757575;
+  padding-bottom: 0; }
+
+.register-footer {
+  position: absolute;
+  bottom: 10px;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  color: #757575; }
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .register-body {
+    background: url("http://lorempixel.com/400/200/") top left no-repeat #f7f7f7;
+    background-size: 100% auto; } }
+@media (max-width: 1024px) {
+  .register-panel {
+    text-align: center;
+    min-height: 440px;
+    margin: 100px auto 0 auto; } }
+@media (max-width: 640px) {
+  .register-panel {
+    text-align: center;
+    width: 300px;
+    min-height: 440px;
+    padding: 40px 20px;
+    margin: 75px auto 0 auto; }
+  .register-panel .ui-g .ui-g-12 {
+    padding: 20px 20px; }
+  .register-panel .ui-g .ui-g-12 .ui-button {
+    margin-top: 30px; } }

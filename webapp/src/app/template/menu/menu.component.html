@@ -17,8 +17,21 @@
 
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu">
-      <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-      <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+      <li routerLink="/users" routerLinkActive="active">
+        <a  >
+          <i class="fa fa-link"></i>
+          <span>Usuários</span>
+        </a>
+      </li>
+
+      <li routerLink="/blank_page" routerLinkActive="active" >
+        <a >
+          <i class="fa fa-link"></i>
+          <span>blank_page</span>
+        </a>
+      </li>
+
+
       <li class="treeview">
         <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
@@ -26,6 +39,7 @@
           <li><a href="#">Link in level 2</a></li>
         </ul>
       </li>
+
     </ul>
     <!-- /.sidebar-menu -->
   </section>

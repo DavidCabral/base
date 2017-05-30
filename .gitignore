@@ -1,5 +1,8 @@
 *.class
 
+**/webapp/node_modules/
+**/api/target/
+
 # BlueJ files
 *.ctxt
 

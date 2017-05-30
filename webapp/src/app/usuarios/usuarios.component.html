@@ -1,0 +1,20 @@
+<div class="my__card">
+  <h3 class="first">Exemplo Sweet Alert</h3>
+  <button pButton type="button" label="sucess" (click)="success()" class="ui-button-success"></button>
+  <button pButton type="button" label="error"  (click)="error()" class="ui-button-danger"></button>
+  <button pButton type="button" label="confirm" (click)="confirm()" class="ui-button-warning"></button>
+</div>
+
+
+<div class="my__card">
+  <h3 class="first">Lista de Usuários</h3>
+  <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+    <input #filter type="text" autofocus pInputText size="50" placeholder="Global Filter">
+  </div>
+  <p-dataTable [value]="list" [globalFilter]="filter" #dt selectionMode="single">
+    <p-column field="id" header="id" [sortable]="true"></p-column>
+    <p-column field="username" header="username" [sortable]="true"></p-column>
+    <p-column field="email" header="email" [sortable]="true"></p-column>
+  </p-dataTable>
+</div>

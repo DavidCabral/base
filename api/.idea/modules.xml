@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/atlas.iml" filepath="$PROJECT_DIR$/atlas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api.iml" filepath="$PROJECT_DIR$/api.iml" />
+      <module fileurl="file://C:\Users\JF\Desktop\Projeto estudo\base\base\api\atlas.iml" filepath="C:\Users\JF\Desktop\Projeto estudo\base\base\api\atlas.iml" />
     </modules>
   </component>
 </project>

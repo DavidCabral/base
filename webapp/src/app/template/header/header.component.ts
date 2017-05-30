@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../_guard/auth.service';
+import {User} from '../../_domain/user';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  user: User;
 
-  constructor() { }
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit() {
+    this.user = this.authService.getUser();
+  }
+
+  getTokenExpirationDate() {
+    return this.authService.getTokenExpirationDate();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }
