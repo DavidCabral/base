@@ -1,6 +1,6 @@
 # base
 
-projeto base contendo um backand em spring boot e um frontend com angular 4.
+projeto base contendo um backend em spring boot e um frontend com angular 4.
 
 
 Créditos
